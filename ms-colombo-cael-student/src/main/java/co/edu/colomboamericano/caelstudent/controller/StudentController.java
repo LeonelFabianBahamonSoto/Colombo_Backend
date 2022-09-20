@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.colomboamericano.caelstudent.entity.Student;
@@ -35,17 +34,6 @@ public class StudentController
 		this.studentSertvice = studentSertvice;
 	};
 	
-	@GetMapping("/auth")
-	public ResponseEntity<String> listarPorId(
-			@Valid @RequestParam(name="documentNumber", required=false) String documentNumber,
-			@RequestParam(name="password", required=false) String password) throws Exception
-	{
-		log.info("Document: " + documentNumber + " Pass: " + password );
-		String response = studentSertvice.authenticate( documentNumber, password );
-
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
-	
 	@GetMapping("/findByDocument/{documentNumber}")
 	public ResponseEntity<Optional<Student>>  findByDocument(@PathVariable("documentNumber") String documentNumber) throws Exception
 	{
@@ -61,29 +49,18 @@ public class StudentController
 	public ResponseEntity<Optional<Student>> listarPorId(@PathVariable("id") Integer id) throws Exception
 	{
 		Optional<Student> obj = studentSertvice.findById(id);
-//		if (obj == null) {
-//			throw new ModeloNotFoundException("ID No encontrado"+id);
-//		}
 		return new ResponseEntity<>(obj,HttpStatus.OK);
 	}
 	
 	@PostMapping("/saveStudent")
 	public  ResponseEntity<Student> save( @Valid @RequestBody Student student )throws Exception
 	{
-//		student.setActivo( ActiveStatus.ACTIVE_STATUS );
-//		student.setPrivacyPolicyState( PrivacyPolicyState.ACCEPTED );
-		log.info("STATUS: " + student);
-		
-//		Student obj  = studentSertvice.registrarTransaccional(dto);
-//		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdConsulta()).toUri();
 		return ResponseEntity.status( HttpStatus.CREATED ).body( studentSertvice.save(student) );
 	}
 	
 	@PutMapping("/updateStudent")
 	public  ResponseEntity<Student> update( @Valid @RequestBody Student student )throws Exception
 	{
-//		Student obj  = studentSertvice.registrarTransaccional(dto);
-//		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdConsulta()).toUri();
 		return ResponseEntity.status( HttpStatus.CREATED ).body( studentSertvice.save(student) );
 	}
 	

@@ -3,11 +3,11 @@ server:
 spring:
   application:
     name: ms-admin-config-server
-#Local configuration
+#Local configuration for Fabian Bahamon Computer
   profiles:
     active: native
   cloud:
     config:
       server:
         native:
-          search-locations: file:///Users/admin/Documents/Smarthink/Colombo/serviciosenlinea_api/ms-admin-data-server
+          search-locations: file:///Users/admin/Documents/Smarthink/Colombo/Colombo_Backend/ms-admin-data-server

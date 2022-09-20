@@ -7,6 +7,4 @@ import co.edu.colomboamericano.caelstudent.entity.Student;
 public interface StudentService extends GenericService<Student, Integer> {
 
 	Optional<Student> findByDocument(String documentNumber);
-
-	String authenticate( String documentNumber, String password ) throws Exception;
 }
