@@ -3,7 +3,7 @@ server:
 spring:
   application:
     name: ms-admin-config-server
-#Local configuration
+#Local configuration for Fabian Bahamon Computer
   profiles:
     active: native
   cloud:

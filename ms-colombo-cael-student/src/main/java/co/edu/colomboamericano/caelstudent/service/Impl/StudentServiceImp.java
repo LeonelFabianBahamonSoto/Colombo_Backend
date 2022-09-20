@@ -44,35 +44,8 @@ public class StudentServiceImp implements StudentService
 	{
 		Optional<Student> student = studentRepository.findByDocumentNumber( documentNumber );
 		
-//		if( student == null ){
-//			throw new Exception("No existe un estudiante registrado con el numero de documento indicado");
-//		};
-		
 		return student;
 	}
-	
-	@Override
-	@Transactional( readOnly = true )
-	public String authenticate( String documentNumber, String password ) throws Exception
-	{
-		if( documentNumber == null ) {
-			throw new Exception("El numero de documento no puede ser nulo");
-		};
-		
-		if( password == null ) {
-			throw new Exception("La contrasenia no puede ser nulo");
-		};
-		
-		Integer isStudent = studentRepository.studentAuthentication(documentNumber, password, "1");
-		
-		if( isStudent == null ) {
-			throw new Exception("El estudiante no esta registrado");
-		};
-		
-		log.info( "THE STUDENT RESPONSE: " + isStudent );
-
-		return "12345qwert";
-	};
 
 	@Override
 	@Transactional( readOnly = true )
