@@ -19,11 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.colomboamericano.caelstudent.entity.Student;
 import co.edu.colomboamericano.caelstudent.service.StudentService;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/v1/student")
-@Slf4j
 public class StudentController
 {
 	@Autowired
