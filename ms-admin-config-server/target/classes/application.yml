@@ -1,0 +1,13 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: ms-admin-config-server
+#Local configuration
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///Users/admin/Documents/Smarthink/Colombo/serviciosenlinea_api/ms-admin-data-server
